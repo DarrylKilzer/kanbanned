@@ -1,0 +1,11 @@
+
+  {
+    "name": "kanbanned",
+    "version": "1.0.0",
+    "scripts": {
+      "setup": "npm run setup:client && npm run setup:server",
+      "setup:client": "cd kanbanned.client && npm i",
+      "setup:server": "cd kanbanned.server && npm i"
+    }
+  }
+  
