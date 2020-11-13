@@ -23,7 +23,7 @@ export default class Startup {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/*`],
         styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-        imgSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`, 'data:'],
+        imgSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`, 'data:', 'https://bcw.blob.core.windows.net/*'],
         connectSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/oauth/token`],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         objectSrc: ["'self'"],
