@@ -25,7 +25,7 @@ export default class Startup {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'", `https://${domain}/*`],
             styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-            imgSrc: ["'self'", `https://${domain}`, 'data:', 'https://bcw.blob.core.windows.net/public/img/*', 'https://avatars0.githubusercontent.com/*'],
+            imgSrc: ["'self'", `https://${domain}`, 'data:', 'https://bcw.blob.core.windows.net/public/img/*', 'https://avatars0.githubusercontent.com'],
             connectSrc: ["'self'", `https://${domain}/oauth/token`, `https://${domain}/userinfo`],
             fontSrc: ["'self'", 'https://fonts.gstatic.com'],
             objectSrc: ["'self'"],
