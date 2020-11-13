@@ -1,7 +1,7 @@
 import bp from 'body-parser'
 import cors from 'cors'
 import express from 'express'
-import helmet from 'helmet'
+import helmet, { contentSecurityPolicy } from 'helmet'
 import { RegisterControllers, Paths } from '../Setup'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { logger } from './utils/Logger'
@@ -17,7 +17,17 @@ export default class Startup {
       },
       credentials: true
     }
-    // app.use(helmet())
+    app.use(
+  contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", "default.example"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+    reportOnly: false,
+  })
+);
     app.use(cors(corsOptions))
     app.use(bp.json({ limit: '50mb' }))
 
