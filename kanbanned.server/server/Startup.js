@@ -21,14 +21,14 @@ export default class Startup {
   contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", 'codeworksclassroom.auth0.com'],
+        scriptSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`],
         styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-        imgSrc: ["'self'", 'https://codeworksclassroom.auth0.com', 'data:'],
-        connectSrc: ["'self'", 'https://codeworksclassroom.auth0.com/oauth/token'],
+        imgSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`, 'data:'],
+        connectSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/oauth/token`],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         objectSrc: ["'self'"],
         mediaSrc: ["'self'"],
-        frameSrc: ["'self'"]
+        frameSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`]
       },
     reportOnly: false,
   })
