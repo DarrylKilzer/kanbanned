@@ -17,11 +17,11 @@ export default class Startup {
       },
       credentials: true
     }
-    app.use(
+    app.use('',
   contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`],
+        scriptSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/*`],
         styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
         imgSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`, 'data:'],
         connectSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/oauth/token`],
