@@ -20,11 +20,16 @@ export default class Startup {
     app.use(
   contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'", "default.example"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
-    },
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", 'codeworksclassroom.auth0.com'],
+        styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
+        imgSrc: ["'self'", 'https://codeworksclassroom.auth0.com', 'data:'],
+        connectSrc: ["'self'", 'https://codeworksclassroom.auth0.com/oauth/token'],
+        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        objectSrc: ["'self'"],
+        mediaSrc: ["'self'"],
+        frameSrc: ["'self'"]
+      },
     reportOnly: false,
   })
 );
