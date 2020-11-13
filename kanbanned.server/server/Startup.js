@@ -1,7 +1,7 @@
 import bp from 'body-parser'
 import cors from 'cors'
 import express from 'express'
-import helmet, { contentSecurityPolicy } from 'helmet'
+import helmet from 'helmet'
 import { RegisterControllers, Paths } from '../Setup'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { logger } from './utils/Logger'
