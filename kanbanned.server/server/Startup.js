@@ -18,20 +18,22 @@ export default class Startup {
       credentials: true
     }
     app.use('',
-  contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/*`],
-        styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-        imgSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`, 'data:', 'https://bcw.blob.core.windows.net/*'],
-        connectSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/oauth/token`],
-        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        objectSrc: ["'self'"],
-        mediaSrc: ["'self'"],
-        frameSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`]
-      },
-    reportOnly: false,
-  })
+      helmet({
+        contentSecurityPolicy: {
+          directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/*`],
+            styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
+            imgSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`, 'data:', 'https://bcw.blob.core.windows.net/*'],
+            connectSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}/oauth/token`],
+            fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+            objectSrc: ["'self'"],
+            mediaSrc: ["'self'"],
+            frameSrc: ["'self'", `https://${process.env.AUTH_DOMAIN}`]
+          },
+          reportOnly: false,
+        }
+      })
 );
     app.use(cors(corsOptions))
     app.use(bp.json({ limit: '50mb' }))
