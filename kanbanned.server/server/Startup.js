@@ -5,6 +5,7 @@ import helmet, { contentSecurityPolicy } from 'helmet'
 import { RegisterControllers, Paths } from '../Setup'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { logger } from './utils/Logger'
+const domain = process.env.AUTH_DOMAIN
 
 export default class Startup {
   static ConfigureGlobalMiddleware(app) {
@@ -22,14 +23,14 @@ export default class Startup {
         contentSecurityPolicy: {
           directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", `https://codeworksclassroom.auth0.com/*`],
+            scriptSrc: ["'self'", `https://${domain}/*`],
             styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-            imgSrc: ["'self'", `https://codeworksclassroom.auth0.com`, 'data:', 'https://bcw.blob.core.windows.net/public/img/9977764104160066'],
-            connectSrc: ["'self'", `https://codeworksclassroom.auth0.com/oauth/token`, `https://codeworksclassroom.auth0.com/userinfo`],
+            imgSrc: ["'self'", `https://${domain}`, 'data:', 'https://bcw.blob.core.windows.net/public/img/9977764104160066', 'https://bcw.blob.core.windows.net/public/img/8600856373152463'],
+            connectSrc: ["'self'", `https://${domain}/oauth/token`, `https://${domain}/userinfo`],
             fontSrc: ["'self'", 'https://fonts.gstatic.com'],
             objectSrc: ["'self'"],
             mediaSrc: ["'self'"],
-            frameSrc: ["'self'", `https://codeworksclassroom.auth0.com`]
+            frameSrc: ["'self'", `https://${domain}`]
           },
           reportOnly: false,
         }
